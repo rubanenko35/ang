@@ -10,6 +10,8 @@ import { HttpService } from './services/http/http.service';
 import { ProductsService } from './components/products/products.service';
 import { AppPreloadingStrategy } from './utils/app.preloading-strategy';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductComponent } from './components/products/product/product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -26,12 +28,14 @@ const appRouter: ModuleWithProviders = RouterModule.forRoot(routes, { preloading
   declarations: [
     AppComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    appRouter
+    appRouter,
+    BrowserAnimationsModule
   ],
   providers: [ HttpService, ProductsService, AppPreloadingStrategy ],
   bootstrap: [ AppComponent ]

@@ -1,9 +1,23 @@
-<div *ngFor="let item of products">
-  <p>{{ item.title }}</p>
+<div class="products-page">
+  <div class="products__wrapper">
+
+    <app-product [@childAnimation]="true"
+      *ngFor="let item of mockData"
+      [prodTitle]="item['title']"
+      [prodDescription]="item['description']"
+      [prodCost]="item['cost']"
+      [prodDiscountCost]="item['discountCost']"
+      [isNew]="item['new']"
+      [imageLink]="item['img']"
+    ></app-product>
+
+  </div>
+
+  <div class="button-wrapper"  *ngIf="isButtonVisible">
+    <button (click)="getMoreProducts()">LOAD MORE</button>
+  </div>
+
 </div>
 
-<p>
-  <button (click)="getMoreProducts()" *ngIf="isButtonVisible">load more</button>
-</p>
+<!--<div class="preloader preloader_show" *ngIf="!isDataReady"></div>-->
 
-<div class="preloader preloader_show" *ngIf="!isDataReady"></div>

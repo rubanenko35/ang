@@ -1,0 +1,144 @@
+@grey: #9f9d9d;
+@red: #ed1111;
+@pink: #ed8e8e;
+@light-gray: #d9d9d9;
+
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 260px;
+  height: 420px;
+  border: 1px solid @grey;
+  margin-bottom: 20px;
+  box-shadow: -5px 5px 10px rgba(0,0,0,0.2);
+  padding: 10px;
+
+  &__photo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &_border{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      height: 200px;
+      background-color: #fff;
+
+      &-leave {
+        animation: lower 0.3s forwards;
+        -webkit-animation: lower 0.3s forwards;
+      }
+
+      &-over{
+        border: 1px solid @grey;
+        animation: upper 0.3s forwards;
+        -webkit-animation: upper 0.3s forwards;
+      }
+    }
+
+    &_wrapper{
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      img{
+        opacity: 0;
+        transition: all 1s;
+        width: 90%;
+        height: 90%;
+      }
+    }
+  }
+
+  &__text{
+    height: 100px;
+    h3{
+      font-size: 16px;
+    }
+    p{
+      font-size: 12px;
+    }
+  }
+
+  &__prise{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 65%;
+    font-size: 20px;
+
+    &-old{
+      text-decoration:line-through;
+      color: @red;
+      font-size: 16px;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-add{
+      background-color: @pink;
+      color: @red;
+    }
+    &-view{
+      background-color: @light-gray;
+      color: @grey;
+    }
+  }
+}
+
+.info-block{
+  position: absolute;
+  width: 70px;
+  height: 40px;
+  background-color: @red;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+
+  &-sale{
+    left: 0;
+  }
+  &-new{
+    right: 0;
+    background-color: #000;
+  }
+
+  &-over.info-block-sale{
+    left: -1px;
+  }
+  &-over.info-block-new{
+    right: -1px;
+  }
+}
+
+@keyframes upper {
+  from {top: 0px;}
+  to {
+    top: -20px;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+
+  }
+}
+
+@keyframes lower {
+  from {
+    top: -20px;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.5);
+  }
+  to {top: 0px;}
+}

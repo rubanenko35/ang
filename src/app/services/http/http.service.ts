@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/catch';
@@ -29,24 +28,10 @@ export class HttpError {
 @Injectable()
 export class HttpService {
   private apiUrl = environment.apiUrl;
-  private activeSpinnerRequests = 0;
-  private isRequestActiveSource: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  isRequestActive$: Observable<boolean> = this.isRequestActiveSource.asObservable();
 
   constructor(
     private http: HttpClient,
   ) {}
-
-  private addSpinnerRequest() {
-    this.activeSpinnerRequests += 1;
-    this.isRequestActiveSource.next(true);
-  }
-
-  private removeSpinnerRequest() {
-    this.activeSpinnerRequests -= 1;
-    this.isRequestActiveSource.next(!!this.activeSpinnerRequests);
-  }
 
   public getData(path, query) {
     const options: any = {};
@@ -115,7 +100,6 @@ export class HttpService {
 
     return _response;
   }
-
 
 
 }

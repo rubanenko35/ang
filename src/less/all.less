@@ -1,2 +1,48 @@
-
 @import 'components/preloader.less';
+
+@grey: #9f9d9d;
+@red: #ed1111;
+@pink: #ed8e8e;
+
+*{
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+h2 {
+  font-weight: normal;
+}
+ul, p{
+  font-size: 14px;
+  color: @grey;
+}
+ul{
+  padding-left: 15px;
+}
+li{
+  position: relative;
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  color: @grey;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover{
+    color: @red;
+  }
+}
+
+button{
+  height: 40px;
+  width: 112px;
+  font-weight: bold;
+  font-size: 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:active{
+    transform: scale(0.98);
+  }
+}

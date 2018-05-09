@@ -1,0 +1,44 @@
+<div class="product"
+     (mouseover)="isOver = true"
+     (mouseleave)="isOver = false">
+
+  <div class="product__photo">
+    <div [ngClass]="{
+                      'product__photo_border': true,
+                      'product__photo_border-leave': isOver === false,
+                      'product__photo_border-over': isOver === true}">
+      <div [ngClass]="{ 'info-block': true, 'info-block-sale': true, 'info-block-over': isOver === true }"
+           *ngIf="prodDiscountCost"
+      >SALE</div>
+      <div class="product__photo_wrapper">
+        <img #img [src]="apiUrl + imageLink" (error)="onImageError()" (load)="onLoad()">
+      </div>
+      <div [ngClass]="{ 'info-block': true, 'info-block-new': true, 'info-block-over': isOver === true }"
+           *ngIf="isNew"
+      >NEW</div>
+    </div>
+  </div>
+
+  <div class="product__text">
+    <h3>{{ prodTitle }}</h3>
+    <p>{{ prodDescription }}</p>
+  </div>
+
+  <div class="product__prise">
+
+    <div *ngIf="!prodDiscountCost;else other_content">{{ prodCost | currency }}</div>
+
+    <ng-template #other_content>
+        <div>{{ prodDiscountCost | currency }} </div>
+        <div class="product__prise-old" >{{ prodCost | currency }}</div>
+    </ng-template>
+
+  </div>
+
+  <div class="product__buttons">
+
+    <button class="product__buttons-add">ADD TO CART</button>
+    <button class="product__buttons-view">VIEW</button>
+
+  </div>
+</div>
