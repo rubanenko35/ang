@@ -2,7 +2,7 @@
   <div class="products__wrapper">
 
     <app-product [@childAnimation]="true"
-      *ngFor="let item of mockData"
+      *ngFor="let item of products"
       [prodTitle]="item['title']"
       [prodDescription]="item['description']"
       [prodCost]="item['cost']"
@@ -19,5 +19,5 @@
 
 </div>
 
-<!--<div class="preloader preloader_show" *ngIf="!isDataReady"></div>-->
+<div class="preloader preloader_show" *ngIf="!isDataReady"></div>
 
